@@ -16,3 +16,7 @@ contents: 'a bunch of random words and text that will fill this box so that i kn
 date: 'December 6, 1991',
 },
 ]
+
+const seedMyPost = () => Post.bulkCreate(postData);
+
+module.exports = seedMyPost;

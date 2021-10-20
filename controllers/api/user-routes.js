@@ -8,7 +8,7 @@ router.post('/', async (req, res) => {
             username: req.body.username,
             password: req.body.password,
         });
-        console.log(dbUserData);
+        
         req.session.save(() => {
             req.session.user_id = dbUserData.id;
             req.session.loggedIn = true;
@@ -29,15 +29,10 @@ router.post('/login', async (req, res) => {
                 .json({ message: 'Incorrect username or password' });
             return;
         }
-        console.log(dbUserData);
+        
 
         const validPassword = await dbUserData.checkPassword(req.body.password);
-        if (!validPassword) {
-            res
-                .status(400)
-                .json({ message: 'Incorrect username or password' });
-            return;
-        }
+        
         req.session.save(() => {
             req.session.user_id = dbUserData.id;
             req.session.loggedIn = true;

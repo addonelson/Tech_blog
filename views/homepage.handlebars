@@ -1,14 +1,18 @@
 <div class="card text-center">
     <div class="card-body">
         {{#each posts as |post|}}
-        <h5 class="card-title">{{title}}</h5>
+      <a><h5 class="card-title">{{title}}</h5> </a>
         <p class="card-text">{{contents}}</p>
-        <a href="#" class="btn btn-primary">Comment</a>
+        <a href=".." class="btn btn-primary">Comment</a>
 
         <div class="card-footer text-muted">
             Made by: {{users.username}} on {{format_date date}}.
         </div>
+
+        <div  class="collapse" for="_1">{}
+              <textarea> </textarea> 
+        </div>
         {{/each}}
-        <a href="/post" class="btn btn-primary">Make a Post</a>
+       
     </div>
 </div>

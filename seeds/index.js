@@ -4,10 +4,10 @@ const seedUsers = require('./userData');
 
 const seedAll = async () => {
   await sequelize.sync({ force: true });
-
-  await seedMyPosts();
-
+  
   await seedUsers();
+  
+  await seedMyPosts();
 
   process.exit(0);
 };

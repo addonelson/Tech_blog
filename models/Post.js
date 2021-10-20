@@ -19,10 +19,6 @@ Post.init(
       type: DataTypes.TEXT,
       allowNull: false,
     },
-    date: {
-      type: DataTypes.DATE,
-      allowNull: false,
-    },
     user_id: {
       type: DataTypes.INTEGER,
       references: {
@@ -32,6 +28,7 @@ Post.init(
     },
   },
   {
+    timestamps: true,
     sequelize,
     freezeTableName: true,
     underscored: true,

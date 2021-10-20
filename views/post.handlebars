@@ -1,13 +1,15 @@
-<form>
+<form id="post-form"> 
     <div class="mb-3">
-        <label for="formGroupExampleInput" class="form-label">Title</label>
-        <input type="text" class="form-control" id="formGroupExampleInput">
+        <label class="form-label">Title</label>
+        <input type="text" id="title" class="form-control">
     </div>
     <div class="mb-3">
-        <label for="formGroupExampleInput2" class="form-label">Content</label>
-        <textarea type="text" class="form-control" id="formGroupExampleInput2" rows="4" cols="50"></textarea>
+        <label class="form-label">Content</label>
+        <textarea type="text" id = "comment" class="form-control"  rows="4" cols="50"></textarea>
     </div>
     <div class="d-grid gap-2">
-        <submit class="btn btn-primary" type="button">Submit</submit>
+        <button class="btn btn-primary">Submit</button>
     </div>
 </form>
+
+<script src="/js/post.js"></script> 

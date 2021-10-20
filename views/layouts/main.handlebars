@@ -8,12 +8,11 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
         integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="/css/jass.css">
     <link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
 
 <body>
-
+    
     <header>
         <h1 class="display-4">Tech Blog</h1>
     </header>
@@ -21,22 +20,17 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
             <a class="navbar-brand" href="/">Home</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav"></div>
-
-                <a class="navbar-brand" aria-current="page" href="#">Dashboard</a>
+            <a class="navbar-brand" aria-current="page" href="/post">Dashboard</a>
 
                 {{#if loggedIn}}
-
-                <a class="navbar-brand" id="logout">Logout</a>
+                <button class="no-button" id="logout">logout</button>
+            
 
                 {{else}}
-
-                <a class="navbar-brand" href="/login">Login</a>
+                <a href="/login">login</a>
 
                 {{/if}}
             </div>

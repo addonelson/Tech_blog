@@ -1,18 +1,24 @@
 <div class="card text-center">
     <div class="card-body">
         {{#each posts as |post|}}
-      <a href="" id="comment-box"><h5 class="card-title">{{title}}</h5> </a>
+        <a href="" id="comment-box">
+            <h5 class="card-title">{{title}}</h5>
+        </a>
         <p class="card-text">{{contents}}</p>
-        <a href=".." class="btn btn-primary">Comment</a>
+        <div class="comments" id="comment-{{id}}"></div>
+        <a data-id={{id}} class="commentPost btn btn-primary">Add Comment</a><br>
 
+        <div class="hide" id={{id}}><br>Comments: <textarea name="" id="text-{{id}}" cols="60"
+                rows="5"></textarea><br><button class="savebtn" data-id={{id}}>Save Comment</button> </div>
         <div class="card-footer text-muted">
-            Made by: {{users.username}} on {{format_date date}}.
+            Made by: {{user.username}} on {{format_date createdAt}}.
         </div>
 
-        <div  class="collapse" for="_1">{}
-              <textarea> </textarea> 
+        <div class="collapse" for="_1">{}
+            <textarea> </textarea>
         </div>
         {{/each}}
-       
+
     </div>
 </div>
+<script src="/js/comment.js"></script>

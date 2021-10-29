@@ -12,3 +12,6 @@
   .collapse + input:checked + div{
     display:block;
   }
+  .hide{
+    display: none;
+  }

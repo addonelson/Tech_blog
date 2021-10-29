@@ -35,6 +35,7 @@ Comment.init(
         }
     },
     {
+        timestamps: true,
         sequelize,
         freezeTableName: true,
         underscored: true,

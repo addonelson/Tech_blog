@@ -17,6 +17,26 @@ router.post('/', withAuth, async (req, res) => {
     // }
 });
 
+router.post('/comment/:id', withAuth, async (req, res) => {
+    console.log(req.body);
+    // try {
+
+        const postData = await Post.update({
+             ...req.body,
+             user_id: req.session.user_id,
+        },{
+            where: {
+                id: req.params.id
+            }
+        });
+
+        res.status(200).json(postData)
+    // } catch (err) {
+    //     console.log(err);
+    //     res.status(400).json(err);
+    // }
+});
+
 router.put('/:id', withAuth, async (res, req) => {
     try {
         const postData = await Post.update(req.body, {
@@ -51,5 +71,35 @@ router.delete('/:id', withAuth, async (res, req) => {
         res.status(500).json(err);
     }
 });
+
+router.get('/comment/:id', withAuth, async (req, res) =>{
+    // try {
+        const commentData = await Post.findByPk(req.params.id, {
+            include: [{
+                    model: Comment,
+                    attributes: [
+                        "id",
+                        "comment_contents",
+                        "comment_date",
+                        "createdAt"
+                    ]
+                },
+                {
+                    model: User,
+                    attributes: [
+                        "id",
+                        "username"
+                    ]
+                },
+            ],
+        });
+        const post = commentData.get({
+            plain: true
+        });
+        res.json(commentData);
+    // }catch (err) {
+        // res.status(500).json(err);
+    // }
+})
 
 module.exports = router;

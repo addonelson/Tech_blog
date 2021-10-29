@@ -19,7 +19,7 @@ router.get('/', async (req, res) => {
         const posts = postData.map((post) => post.get({
             plain: true
         }));
-
+console.log(posts);
         res.render('homepage', {
             posts,
             loggedIn: req.session.loggedIn
@@ -37,7 +37,8 @@ router.get('/post/:id', withAuth, async (req, res) => {
                     attributes: [
                         "id",
                         "comment_contents",
-                        "comment_date"
+                        "comment_date",
+                        "createdAt"
                     ]
                 },
                 {

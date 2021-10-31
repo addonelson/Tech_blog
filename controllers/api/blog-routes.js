@@ -74,7 +74,7 @@ router.delete('/:id', withAuth, async (res, req) => {
 });
 
 router.get('/comment/:id', withAuth, async (req, res) =>{
-    // try {
+    try {
         const commentData = await Post.findByPk(req.params.id, {
             include: [{
                     model: Comment,
@@ -92,23 +92,16 @@ router.get('/comment/:id', withAuth, async (req, res) =>{
                             'username'
                         ]
                     }]
-                },
-                // {
-                //     model: User,
-                //     attributes: [
-                //         "id",
-                //         "username"
-                //     ]
-                // },
+                }
             ],
         });
         const post = commentData.get({
             plain: true
         });
         res.json(commentData);
-    // }catch (err) {
-        // res.status(500).json(err);
-    // }
+    }catch (err) {
+        res.status(500).json(err);
+    }
 })
 
 module.exports = router;

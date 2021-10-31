@@ -21,12 +21,12 @@ router.get('/', async (req, res) => {
                 }]
             }]
         });
-        console.log(postData);
+        
         // Serialize data so the template can read it
         const posts = postData.map((post) => post.get({
             plain: true
         }));
-console.log(posts);
+
         res.render('homepage', {
             posts,
             loggedIn: req.session.loggedIn
@@ -88,7 +88,6 @@ router.get('/signup', (req, res) => {
 });
 
 router.get('/post', (req, res) => {
-    console.log(!req.session.loggedIn);
 
     if (!req.session.loggedIn) {
         res.redirect('/login');

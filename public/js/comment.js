@@ -19,7 +19,6 @@ for (let i = 0; i < savebtn.length; i++) {
         div.classList.add("hide")
         var comment_contents = document.getElementById("text-" + id).value;
 
-console.log(comment_contents);
 
         fetch("/api/posts/comment/"+id, {
                 method: 'POST',
@@ -54,6 +53,6 @@ function loadComments(id) {
                 }
                              
             }
-            console.log(commentData)
+        
         })
 }

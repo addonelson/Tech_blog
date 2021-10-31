@@ -1,16 +1,18 @@
-<div class="card text-center">
+<div class="bg-success container-sm card text-center">
     <div class="card-body">
         {{#each posts as |post|}}
         <a href="" id="comment-box">
-            <h5 class="card-title">{{title}}</h5>
+            <h5 class="text-white card-title">{{title}}</h5>
         </a>
         <p class="card-text">{{contents}}</p>
+        <h4>Comments by users:</h4>
+        <p class=" card-text savedComment">{{comment.comment_contents}}</p> 
         <div class="comments" id="comment-{{id}}"></div>
         <a data-id={{id}} class="commentPost btn btn-primary">Add Comment</a><br>
 
-        <div class="hide" id={{id}}><br>Comments: <textarea name="" id="text-{{id}}" cols="60"
-                rows="5"></textarea><br><button class="savebtn" data-id={{id}}>Save Comment</button> </div>
-        <div class="card-footer text-muted">
+        <div class="hide" id={{id}}><br>Comments: <textarea name="" id="text-{{id}}" cols="30"
+                rows="3"></textarea><br><button class="savebtn" data-id={{id}}>Save Comment</button> </div>
+        <div class="bg-secondary text-white card-footer">
             Made by: {{user.username}} on {{format_date createdAt}}.
         </div>
 
@@ -21,4 +23,5 @@
 
     </div>
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="/js/comment.js"></script>

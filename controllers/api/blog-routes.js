@@ -21,8 +21,9 @@ router.post('/comment/:id', withAuth, async (req, res) => {
     console.log(req.body);
     // try {
 
-        const postData = await Post.update({
+        const commentData = await Comment.create({
              ...req.body,
+             post_id: req.params.id,
              user_id: req.session.user_id,
         },{
             where: {
@@ -30,7 +31,7 @@ router.post('/comment/:id', withAuth, async (req, res) => {
             }
         });
 
-        res.status(200).json(postData)
+        res.status(200).json(commentData)
     // } catch (err) {
     //     console.log(err);
     //     res.status(400).json(err);
@@ -81,16 +82,24 @@ router.get('/comment/:id', withAuth, async (req, res) =>{
                         "id",
                         "comment_contents",
                         "comment_date",
-                        "createdAt"
-                    ]
+                        "createdAt",
+                        "user_id",
+                        "post_id"
+                    ],
+                    include: [{
+                        model: User,
+                        attributes: [
+                            'username'
+                        ]
+                    }]
                 },
-                {
-                    model: User,
-                    attributes: [
-                        "id",
-                        "username"
-                    ]
-                },
+                // {
+                //     model: User,
+                //     attributes: [
+                //         "id",
+                //         "username"
+                //     ]
+                // },
             ],
         });
         const post = commentData.get({

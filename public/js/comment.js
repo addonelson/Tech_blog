@@ -18,7 +18,9 @@ for (let i = 0; i < savebtn.length; i++) {
         var div = document.getElementById(id);
         div.classList.add("hide")
         var comment_contents = document.getElementById("text-" + id).value;
+
 console.log(comment_contents);
+
         fetch("/api/posts/comment/"+id, {
                 method: 'POST',
                 body: JSON.stringify({
@@ -29,10 +31,11 @@ console.log(comment_contents);
                     'Content-Type': 'application/json'
                 },
             })
-            .then(function (data) {})
+            .then(function (data) {
+                location.reload()
+            })
 
     })
-    
 
 }
 
@@ -40,10 +43,16 @@ function loadComments(id) {
     fetch("/api/posts/comment/"+id)
         .then(res => res.json())
         .then(commentData => {
+            console.log(commentData);
             var commentId = document.getElementById("comment-"+id)
             commentId.innerHTML = "";
             for (let i = 0; i < commentData.comments.length; i++) {
-                commentId.innerHTML = comment.innerHTML + commentData.comments[i];                
+                if (commentData.comments[i].user.username) {
+                    commentId.innerHTML = commentId.innerHTML + commentData.comments[i].comment_contents + " by " + commentData.comments[i].user.username + " updated on " + moment(commentData.comments[i].comment_date, "YYYY-MM-DD").format("MM/DD/YYYY") + "<br>";  
+                }else{
+                    commentId.innerHTML = commentId.innerHTML + commentData.comments[i].comment_contents + " updated on " + moment(commentData.comments[i].comment_date, "YYYY-MM-DD").format("MM/DD/YYYY") + "<br>";  
+                }
+                             
             }
             console.log(commentData)
         })

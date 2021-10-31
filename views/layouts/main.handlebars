@@ -14,16 +14,13 @@
 <body>
     
     <header>
-        <h1 class="display-4">Tech Blog</h1>
+        <h1 class="text-center bg-primary text-white display-4">Tech Blog</h1>
     </header>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-sm navbar-light bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/">Home</a>
-            <button class="navbar-toggler" type="button">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <a class="navbar-brand" aria-current="page" href="/post">Dashboard</a>
+            <a class="navbar-brand" aria-expanded="false" href="/">Home</a>
+            <a class="navbar-brand" aria-expanded="false" href="/post">Dashboard</a>
 
                 {{#if loggedIn}}
                 <button class="no-button" id="logout">logout</button>

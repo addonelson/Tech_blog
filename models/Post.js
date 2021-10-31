@@ -25,8 +25,8 @@ Post.init(
         model: 'user',
         key: 'id',
       },
-    },
-  },
+    }
+   },
   {
     timestamps: true,
     sequelize,

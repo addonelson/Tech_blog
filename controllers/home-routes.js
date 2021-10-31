@@ -13,6 +13,13 @@ router.get('/', async (req, res) => {
                 model: User,
                 attributes: ['username'],
             }, ],
+            include: [{
+                model: Comment,
+                attributes: ['comment_contents', 'comment_date'], 
+                include: [{
+                    model: User
+                }]
+            }]
         });
         console.log(postData);
         // Serialize data so the template can read it
